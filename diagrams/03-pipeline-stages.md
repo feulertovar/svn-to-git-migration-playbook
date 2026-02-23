@@ -1,20 +1,20 @@
 # CI pipeline stages (Build → Test → Tag/Build → Archive → Deploy → Notify)
 
 ```mermaid
-flowchart TD
-  A[Checkout] --> B[Build]
-  B --> C[Test]
-  C --> D{Is this a release-eligible branch?\n(main or active release train)}
-  D -- No --> N[Stop after validation\n(PR checks reported)] --> Z[Notify\n(PR status)]
-  D -- Yes --> E[Tag + Build\n(immutable version)]
-  E --> F[Archive artifact\n(repo / artifact store)]
-  F --> G[Security scans\n(SAST / dependency)]
-  G --> H[Deploy to non-prod\n(dev/qa/stage)]
-  H --> I{Promotion / approvals required?}
-  I -- Yes --> J[Approval gate]
-  J --> K[Deploy to prod]
-  I -- No --> K[Deploy to prod]
-  K --> L[Notify\n(Slack/email + summary)]
+flowchart LR
+
+  A["Checkout source"] --> B["Build application"]
+  B --> C["Run tests"]
+
+  C --> D{"Release eligible"}
+
+  D -->|Yes| E["Tag and build release artifact"]
+  D -->|No| N["Notify build result"]
+
+  E --> F["Archive artifact to repository"]
+  F --> G["Security scan"]
+  G --> H["Deploy to environment"]
+  H --> I["Notify deployment result"]
 ```
 
 **Notes**
