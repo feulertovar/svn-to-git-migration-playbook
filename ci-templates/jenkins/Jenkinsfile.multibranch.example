@@ -1,0 +1,70 @@
+// Jenkinsfile (sanitized) — Multibranch Pipeline Example
+// Stages: Build → Test → Tag+Build → Archive → Deploy → Notify
+// Notes: Replace placeholder commands with your build system (Maven/Gradle/npm/etc.)
+
+pipeline {
+  agent any
+  options {
+    timestamps()
+    disableConcurrentBuilds()
+  }
+
+  environment {
+    // ARTIFACT_REPO_URL = credentials('artifact-repo-url')
+    // DEPLOY_TARGET = 'test'
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
+
+    stage('Build') {
+      steps {
+        sh 'echo "build step (replace me)"'
+      }
+    }
+
+    stage('Test') {
+      steps {
+        sh 'echo "test step (replace me)"'
+      }
+    }
+
+    stage('Tag + Build (Release Only)') {
+      when { branch 'main' }
+      steps {
+        sh 'echo "calculate version + create tag + rebuild immutable artifact"'
+      }
+    }
+
+    stage('Archive') {
+      steps {
+        sh 'echo "publish artifact to artifact repository"'
+      }
+    }
+
+    stage('Deploy (Example: Test)') {
+      steps {
+        sh 'echo "deploy using automation (e.g., Ansible/Terraform/Helm)"'
+      }
+    }
+
+    stage('Notify') {
+      steps {
+        sh 'echo "notify chat/email with build+deploy summary"'
+      }
+    }
+  }
+
+  post {
+    always {
+      echo 'cleanup / collect logs'
+    }
+    failure {
+      echo 'escalate failure notifications'
+    }
+  }
+}

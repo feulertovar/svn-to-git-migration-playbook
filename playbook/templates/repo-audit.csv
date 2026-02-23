@@ -1,0 +1,2 @@
+repo,owner,svm_layout,branch_count,tag_count,active_committers,ci_system,artifact_system,risk,notes
+example-repo,team-a,stdlayout,12,40,8,Jenkins,ArtifactRepo,Medium,"legacy build; uses SVN revision in version string"
