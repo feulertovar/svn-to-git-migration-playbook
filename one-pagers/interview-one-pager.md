@@ -1,4 +1,4 @@
-# Interview One-Pager — SVN → Git Migration (Release Trains + Standardized CI)
+# SVN → Git Migration (Release Trains + Standardized CI)
 
 ## What was improved?
 - **Source control modernization:** moved from centralized SVN to Git with pull requests, required checks, and branch protections.

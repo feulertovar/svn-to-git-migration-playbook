@@ -1,6 +1,6 @@
 # CI/CD Templates (Sanitized)
 
-These examples are intentionally generic and safe to publish.
+These examples are intentionally generic.
 They model an enterprise pipeline that includes build/test/tag/archive/deploy/notify and can be adapted to:
 - Jenkins Multibranch
 - GitHub Actions
