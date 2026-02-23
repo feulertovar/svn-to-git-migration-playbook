@@ -16,8 +16,8 @@ flowchart LR
   r2 -->|merge forward| r3
 
   %% Feature branches are short-lived and merge into the active train (R1)
-  f1["feature/*"]:::feature -->|PR (2 approvers + checks)| r1
-  f2["bugfix/*"]:::feature -->|PR (2 approvers + checks)| r1
+  f1["feature/*"]:::feature -->|PR: 2 approvals, checks pass| r1
+  f2["bugfix/*"]:::feature -->|PR: 2 approvals, checks pass| r1
 
   classDef main fill:#e6f4ff,stroke:#1b74e4,stroke-width:2px;
   classDef train fill:#f3f4f6,stroke:#6b7280,stroke-width:1px;
